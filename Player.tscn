@@ -32,23 +32,22 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lakda"]
-radius = 27.085
-height = 62.0322
+radius = 34.0478
+height = 68.0955
 
 [node name="Player" type="Area2D"]
-position = Vector2(168, 361)
+position = Vector2(162, 353)
 script = ExtResource("1_w121e")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-9, -9.25001)
+position = Vector2(0, -8)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_p13u7")
 animation = &"walk"
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, -6)
+position = Vector2(1, -6.00003)
 rotation = 0.0333329
 shape = SubResource("CapsuleShape2D_lakda")
-metadata/_edit_group_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
