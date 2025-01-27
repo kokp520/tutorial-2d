@@ -5,7 +5,7 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	new_game()
+	#new_game()
 	pass # Replace with function body.
 
 
@@ -15,10 +15,12 @@ func _process(delta: float) -> void:
 	
 
 func new_game():
-	print("Player Node: ", $Player)
 	score = 0
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$Music.play()
 
 
 # 點擊player節點中的onhit, 就可以在main腳本中製造player on hit
@@ -26,11 +28,15 @@ func new_game():
 func game_over() -> void:
 	$ScoreTimer.stop()
 	$MobTimer.stop()
-	pass # Replace with function body.
+	
+	$HUD.show_game_over()
+	$Music.stop()
+	$DeathSound.play()
 
 
 func _on_score_timer_timeout() -> void:
 	score += 1
+	$HUD.update_score(score)
 
 
 # new monster
